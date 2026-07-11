@@ -10,6 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.scrollTo(0, 0);
 
+  // Clear hash and force scroll on full page load (overrides post-rendering layout shifts)
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      if (window.location.hash && window.location.hash !== '#hero') {
+        history.replaceState(null, null, ' ');
+      }
+    }, 100);
+  });
+
   // ==========================================================================
   // 1. MOBILE MENU NAVIGATION
   // ==========================================================================
