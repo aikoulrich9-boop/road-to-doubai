@@ -110,28 +110,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 4. SCROLL REVEAL (INTERSECTION OBSERVER) & STATS COUNTERS
+  // 4. GSAP SCROLL REVEAL & PARALLAX ANIMATIONS
   // ==========================================================================
+  gsap.registerPlugin(ScrollTrigger);
+
   const revealElements = document.querySelectorAll('[data-reveal]');
-  
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const delay = entry.target.getAttribute('data-delay') || 0;
-        // Reduce the artificial stagger delay to make elements appear faster
-        const fastDelay = delay ? delay / 2 : 0; 
-        setTimeout(() => {
-          entry.target.classList.add('revealed');
-        }, fastDelay);
-        observer.unobserve(entry.target);
+  revealElements.forEach(el => {
+    const delay = (el.getAttribute('data-delay') || 0) / 1000;
+    
+    gsap.to(el, {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      duration: 1.2,
+      ease: 'power3.out',
+      delay: delay,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
       }
     });
-  }, {
-    threshold: 0,
-    rootMargin: '0px 0px 150px 0px'
   });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  // Parallax Backgrounds
+  gsap.utils.toArray('.about-section, .guest-section, .gallery-section').forEach(section => {
+    gsap.fromTo(section, 
+      { backgroundPosition: '50% 20%' },
+      {
+        backgroundPosition: '50% 80%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      }
+    );
+  });
 
   // Stats Counter Animation
   const counters = document.querySelectorAll('.counter');
@@ -296,6 +314,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const translations = {
     en: {
+      "shuffler.c1.title": "Abidjan Hub",
+      "shuffler.c1.desc": "Corporate Entry Point",
+      "shuffler.c2.title": "Dubai Chamber",
+      "shuffler.c2.desc": "Global Ecosystem Connection",
+      "shuffler.c3.title": "Bilateral Trust",
+      "shuffler.c3.desc": "Unified Regulatory Passport",
       "nav.about": "About",
       "nav.forum": "Forum",
       "nav.opportunities": "Opportunities",
@@ -472,6 +496,12 @@ document.addEventListener('DOMContentLoaded', () => {
       "msg.newsletter_success": "Accredited to newsletter briefing list."
     },
     fr: {
+      "shuffler.c1.title": "Abidjan Hub",
+      "shuffler.c1.desc": "Point d'entrée corporatif",
+      "shuffler.c2.title": "Dubai Chamber",
+      "shuffler.c2.desc": "Connexion écosystème globale",
+      "shuffler.c3.title": "Bilateral Trust",
+      "shuffler.c3.desc": "Passeport réglementaire unifié",
       "nav.about": "À propos",
       "nav.forum": "Forum",
       "nav.opportunities": "Opportunités",
@@ -687,6 +717,133 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('preferredLang');
   const defaultLang = savedLang || (navigator.language.startsWith('fr') ? 'fr' : 'en');
   updateLanguage(defaultLang);
+
+  // ==========================================================================
+  // 11. INTERACTIVE MICRO-UIs LOGIC
+  // ==========================================================================
+
+  // A. Diagnostic Shuffler
+  const shufflerContainer = document.querySelector('.shuffler-container');
+  if (shufflerContainer) {
+    const shuffleCards = () => {
+      const cardsArray = Array.from(shufflerContainer.children);
+      const lastCard = cardsArray.pop();
+      shufflerContainer.insertBefore(lastCard, cardsArray[0]);
+    };
+    setInterval(shuffleCards, 3000);
+  }
+
+  // B. Telemetry Typewriter
+  const telemetryEl = document.getElementById('telemetry-text');
+  if (telemetryEl) {
+    const telemetryMessages = {
+      en: [
+        "Initializing pipeline...",
+        "SYS: Bilateral flow rate +24.8% YoY",
+        "EST: 100 Selected Enterprises Vetted",
+        "SEC: Dubai Chambers API Online...",
+        "ACC: Regulatory Corridor Established",
+        "EST: GCC Institutional Capital Vetted"
+      ],
+      fr: [
+        "Initialisation du pipeline...",
+        "SYS: Flux bilatéraux +24.8% YoY",
+        "EST: 100 Entreprises sélectionnées",
+        "SEC: API Dubai Chambers Connectée...",
+        "ACC: Corridor réglementaire établi",
+        "EST: Capitaux institutionnels validés"
+      ]
+    };
+
+    let currentMsgIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    let typingSpeed = 50;
+
+    const typeTelemetry = () => {
+      const currentLang = localStorage.getItem('preferredLang') || 'en';
+      const messages = telemetryMessages[currentLang] || telemetryMessages['en'];
+      const currentText = messages[currentMsgIdx];
+
+      if (!isDeleting) {
+        telemetryEl.innerHTML = currentText.substring(0, charIdx) + '<span class="telemetry-cursor"></span>';
+        charIdx++;
+        if (charIdx > currentText.length) {
+          isDeleting = true;
+          typingSpeed = 2000;
+        } else {
+          typingSpeed = 50;
+        }
+      } else {
+        telemetryEl.innerHTML = currentText.substring(0, charIdx) + '<span class="telemetry-cursor"></span>';
+        charIdx--;
+        if (charIdx < 0) {
+          isDeleting = false;
+          currentMsgIdx = (currentMsgIdx + 1) % messages.length;
+          typingSpeed = 500;
+        } else {
+          typingSpeed = 30;
+        }
+      }
+      setTimeout(typeTelemetry, typingSpeed);
+    };
+
+    setTimeout(typeTelemetry, 1000);
+  }
+
+  // C. Cursor Protocol Scheduler
+  const cursorSvg = document.getElementById('virtual-cursor');
+  const schedulerBtn = document.getElementById('scheduler-btn');
+  const days = document.querySelectorAll('.grid-day');
+
+  if (cursorSvg && schedulerBtn && days.length > 0) {
+    const runSchedulerAnimation = () => {
+      const targetDay = days[2];
+      const rectDay = targetDay.getBoundingClientRect();
+      const rectBtn = schedulerBtn.getBoundingClientRect();
+      const rectBox = document.querySelector('.scheduler-box').getBoundingClientRect();
+
+      const dayX = rectDay.left - rectBox.left + rectDay.width / 2;
+      const dayY = rectDay.top - rectBox.top + rectDay.height / 2;
+      const btnX = rectBtn.left - rectBox.left + rectBtn.width / 2;
+      const btnY = rectBtn.top - rectBox.top + rectBtn.height / 2;
+
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+      tl.set(cursorSvg, { x: 250, y: 120, opacity: 0 })
+        .to(cursorSvg, { opacity: 1, duration: 0.3 })
+        .to(cursorSvg, { x: dayX, y: dayY, duration: 1.5, ease: 'power2.inOut' })
+        .to(cursorSvg, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 })
+        .call(() => targetDay.classList.add('active'))
+        .to(cursorSvg, { x: btnX, y: btnY, duration: 1.2, ease: 'power2.inOut', delay: 0.5 })
+        .to(cursorSvg, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 })
+        .call(() => {
+          schedulerBtn.classList.add('active');
+          if (localStorage.getItem('preferredLang') === 'fr') {
+            schedulerBtn.textContent = 'SESSION SAUVEGARDÉE';
+          } else {
+            schedulerBtn.textContent = 'SESSION SAVED';
+          }
+        })
+        .to(cursorSvg, { opacity: 0, duration: 0.5, delay: 1.5 })
+        .call(() => {
+          targetDay.classList.remove('active');
+          schedulerBtn.classList.remove('active');
+          if (localStorage.getItem('preferredLang') === 'fr') {
+            schedulerBtn.textContent = 'SAUVEGARDER LA SESSION';
+          } else {
+            schedulerBtn.textContent = 'SAVE SESSION';
+          }
+        });
+    };
+
+    ScrollTrigger.create({
+      trigger: '.interactive-scheduler',
+      start: 'top 80%',
+      onEnter: () => runSchedulerAnimation(),
+      once: true
+    });
+  }
 
   alignDisplayInk();
   window.addEventListener('resize', alignDisplayInk);

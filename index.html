@@ -24,6 +24,14 @@
   <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body class="grid-off">
+  <!-- SVG Noise Filter Overlay -->
+  <svg style="display:none;" aria-hidden="true">
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" />
+    </filter>
+  </svg>
+  <div class="noise-overlay"></div>
 
   <!-- Grid overlay system for visual check (Müller-Brockmann engineering layout check) -->
   <div class="wrap guides-container" aria-hidden="true">
@@ -55,7 +63,7 @@
             <option value="fr">FR</option>
           </select>
         </div>
-        <a href="#contact" class="btn btn-gold btn-nav" data-i18n="nav.register">Register Now</a>
+        <a href="#contact" class="btn btn-gold btn-nav" data-i18n="nav.register"><span class="btn-hover-bg"></span>Register Now</a>
         <button class="nav-toggle" id="menu-btn" aria-label="Toggle Navigation Menu">
           <i class="ph ph-list"></i>
         </button>
@@ -75,7 +83,7 @@
       <a href="#highlights" class="mobile-link" data-i18n="nav.program">Program</a>
       <a href="#gallery" class="mobile-link" data-i18n="nav.gallery">Gallery</a>
       <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
-      <a href="#contact" class="btn btn-gold w-full mt-4" data-i18n="nav.register">Register Now</a>
+      <a href="#contact" class="btn btn-gold w-full mt-4" data-i18n="nav.register"><span class="btn-hover-bg"></span>Register Now</a>
     </nav>
   </div>
 
@@ -111,38 +119,86 @@
             </div>
           </div>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-gold btn-glow" data-i18n="nav.register">Register Now</a>
-            <a href="#about" class="btn btn-outline" data-i18n="nav.partner">Become a Partner</a>
+            <a href="#contact" class="btn btn-gold btn-glow" data-i18n="nav.register"><span class="btn-hover-bg"></span>Register Now</a>
+            <a href="#about" class="btn btn-outline" data-i18n="nav.partner"><span class="btn-hover-bg"></span>Become a Partner</a>
           </div>
         </div>
 
         <!-- Overlapping Glass Cards Section (Reference-inspired layout) -->
         <div class="hero-overlays-grid">
-          <div class="glass-card hero-overlay-card" data-reveal="fade-up">
+          <!-- Card 1 — "Diagnostic Shuffler" -->
+          <div class="glass-card hero-overlay-card interactive-shuffler" data-reveal="fade-up">
             <div class="card-glow"></div>
             <div class="card-icon-box">
               <i class="ph ph-globe-hemisphere-east text-gold"></i>
             </div>
             <h3 data-i18n="hero.card1.title">The Gateway</h3>
             <p data-i18n="hero.card1.desc">Connecting elite African companies, government agencies, and entrepreneurs directly to the capital markets and business ecosystem of Dubai.</p>
+            
+            <div class="shuffler-container">
+              <div class="shuffler-card">
+                <span class="shuffler-num text-gold font-mono">01</span>
+                <h4 data-i18n="shuffler.c1.title">Abidjan Hub</h4>
+                <p data-i18n="shuffler.c1.desc">Corporate Entry</p>
+              </div>
+              <div class="shuffler-card">
+                <span class="shuffler-num text-gold font-mono">02</span>
+                <h4 data-i18n="shuffler.c2.title">Dubai Chamber</h4>
+                <p data-i18n="shuffler.c2.desc">Global Connection</p>
+              </div>
+              <div class="shuffler-card">
+                <span class="shuffler-num text-gold font-mono">03</span>
+                <h4 data-i18n="shuffler.c3.title">Bilateral Trust</h4>
+                <p data-i18n="shuffler.c3.desc">Regulatory Passport</p>
+              </div>
+            </div>
           </div>
 
-          <div class="glass-card hero-overlay-card" data-reveal="fade-up" data-delay="100">
+          <!-- Card 2 — "Telemetry Typewriter" -->
+          <div class="glass-card hero-overlay-card interactive-typewriter" data-reveal="fade-up" data-delay="100">
             <div class="card-glow"></div>
             <div class="card-icon-box">
               <i class="ph ph-handshake text-gold"></i>
             </div>
             <h3 data-i18n="hero.card2.title">Strategic Alignment</h3>
             <p data-i18n="hero.card2.desc">Facilitating bilateral trade agreements, major joint ventures, and sustainable project financing in highly profitable emerging sectors.</p>
+            
+            <div class="telemetry-box">
+              <div class="telemetry-header">
+                <span class="live-dot"></span>
+                <span class="live-text font-mono">LIVE FEED</span>
+              </div>
+              <div class="telemetry-content" id="telemetry-text"><span class="telemetry-cursor"></span></div>
+            </div>
           </div>
 
-          <div class="glass-card hero-overlay-card" data-reveal="fade-up" data-delay="200">
+          <!-- Card 3 — "Cursor Protocol Scheduler" -->
+          <div class="glass-card hero-overlay-card interactive-scheduler" data-reveal="fade-up" data-delay="200">
             <div class="card-glow"></div>
             <div class="card-icon-box">
               <i class="ph ph-currency-dollar text-gold"></i>
             </div>
             <h3 data-i18n="hero.card3.title">Investment Pipeline</h3>
             <p data-i18n="hero.card3.desc">Unlocking access to sovereign wealth funds, private equity hubs, venture capitalists, and premium family offices in the Gulf region.</p>
+            
+            <div class="scheduler-box">
+              <div class="scheduler-grid">
+                <div class="grid-day" data-day="S">S</div>
+                <div class="grid-day" data-day="M">M</div>
+                <div class="grid-day" data-day="T">T</div>
+                <div class="grid-day" data-day="W">W</div>
+                <div class="grid-day" data-day="T2">T</div>
+                <div class="grid-day" data-day="F">F</div>
+                <div class="grid-day" data-day="S2">S</div>
+              </div>
+              <div class="scheduler-actions">
+                <button class="scheduler-save-btn font-mono" id="scheduler-btn">SAVE SESSION</button>
+              </div>
+              <!-- SVG Cursor -->
+              <svg class="scheduler-cursor" viewBox="0 0 24 24" id="virtual-cursor" width="20" height="20">
+                <path d="M4.5 3v15.25l3.84-3.84 2.66 6.34 2.37-.99-2.65-6.34 5.28-.12z" fill="#D9A441" stroke="#071D49" stroke-width="1.5" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -600,6 +656,7 @@
 
             <button type="submit" class="btn btn-gold w-full mt-4" id="submit-btn">
               <span data-i18n="contact.form.submit">Submit Accreditation Request</span>
+              <span class="btn-hover-bg"></span>
               <i class="ph ph-paper-plane-tilt"></i>
             </button>
           </form>
@@ -666,6 +723,11 @@
     <div class="whatsapp-tooltip" data-i18n="whatsapp.tooltip">Besoin d'aide ?</div>
     <i class="ph ph-whatsapp-logo"></i>
   </a>
+
+  <!-- Core Javascript File -->
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Core Javascript File -->
   <script src="app.js"></script>
