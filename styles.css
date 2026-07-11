@@ -1209,7 +1209,7 @@ body.grid-on .guides {
    ========================================================================== */
 .gallery-section {
   padding: 128px 0;
-  background: transparent;
+  background: linear-gradient(rgba(7, 29, 73, 0.9), rgba(7, 29, 73, 0.9)), url('assets/gallery_bg.jpg') center/cover no-repeat;
 }
 
 .masonry-gallery {
