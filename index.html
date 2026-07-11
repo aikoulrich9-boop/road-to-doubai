@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official website of the Dubai Business Investment Forum – Côte d'Ivoire 2026. Connecting African growth, private sector, and government opportunities with Dubai's elite investment ecosystem.">
+  <meta name="keywords" content="Dubai Business Investment Forum, Abidjan 2026, Côte d'Ivoire Investment, African Financing, Dubai Venture Capital, Strategic Partnerships">
+  <title>Dubai Business Investment Forum – Côte d'Ivoire 2026</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dubai Business Investment Forum – Côte d'Ivoire 2026">
+  <meta property="og:description" content="Connecting Côte d'Ivoire to Dubai. Financing African Growth. Building Global Partnerships.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body class="grid-off">
+
+  <!-- Grid overlay system for visual check (Müller-Brockmann engineering layout check) -->
+  <div class="wrap guides-container" aria-hidden="true">
+    <div class="guides" id="guides-overlay"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar" id="site-header">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="main-logo" aria-label="Dubai Business Investment Forum Home">
+        <img src="logodsv.png" alt="DBIF Logo" class="logo-img">
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" id="nav-links" aria-label="Main Navigation">
+        <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+        <a href="#why-dubai" class="nav-link" data-i18n="nav.forum">Forum</a>
+        <a href="#speakers" class="nav-link" data-i18n="nav.speakers">Speakers</a>
+        <a href="#highlights" class="nav-link" data-i18n="nav.program">Program</a>
+        <a href="#gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a>
+        <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <div class="lang-selector">
+          <select id="lang-select" aria-label="Select Language">
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+          </select>
+        </div>
+        <a href="#contact" class="btn btn-gold btn-nav" data-i18n="nav.register">Register Now</a>
+        <button class="nav-toggle" id="menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-menu" id="mobile-overlay">
+    <button class="mobile-close" id="close-btn" aria-label="Close Navigation Menu">
+      <i class="ph ph-x"></i>
+    </button>
+    <nav class="mobile-links" aria-label="Mobile Navigation">
+      <a href="#about" class="mobile-link" data-i18n="nav.about">About</a>
+      <a href="#why-dubai" class="mobile-link" data-i18n="nav.forum">Forum</a>
+      <a href="#speakers" class="mobile-link" data-i18n="nav.speakers">Speakers</a>
+      <a href="#highlights" class="mobile-link" data-i18n="nav.program">Program</a>
+      <a href="#gallery" class="mobile-link" data-i18n="nav.gallery">Gallery</a>
+      <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
+      <a href="#contact" class="btn btn-gold w-full mt-4" data-i18n="nav.register">Register Now</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-container">
+        <img class="hero-bg-image" src="assets/chatgpt_hero.png?v=3" alt="Hero background image" loading="eager">
+        <div class="hero-bg-overlay"></div>
+      </div>
+      <!-- Canvas for animated particles -->
+      <canvas id="hero-particles" class="hero-canvas"></canvas>
+
+      <div class="hero-content wrap">
+        <div class="hero-text-block">
+
+          <h1 class="hero-title" data-i18n="hero.title">
+            DUBAI INVESTMENT<br>
+            FORUM, CÔTE D'IVOIRE<br>
+            <span class="text-gold italic font-serif hero-edition">Edition 2026</span>
+          </h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            100 entreprises ivoiriennes sélectionnées. Trois jours pour connecter Abidjan à Dubaï.
+          </p>
+          <div class="hero-event-stats">
+            <div class="stat-badge">
+              <i class="ph ph-calendar text-gold"></i>
+              <span data-i18n="hero.dates">15 · 16 · 17 Juillet 2026</span>
+            </div>
+            <div class="stat-badge">
+              <i class="ph ph-users text-gold"></i>
+              <span data-i18n="hero.visitors">15 000 Visiteurs</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-gold btn-glow" data-i18n="nav.register">Register Now</a>
+            <a href="#about" class="btn btn-outline" data-i18n="nav.partner">Become a Partner</a>
+          </div>
+        </div>
+
+        <!-- Overlapping Glass Cards Section (Reference-inspired layout) -->
+        <div class="hero-overlays-grid">
+          <div class="glass-card hero-overlay-card" data-reveal="fade-up">
+            <div class="card-glow"></div>
+            <div class="card-icon-box">
+              <i class="ph ph-globe-hemisphere-east text-gold"></i>
+            </div>
+            <h3 data-i18n="hero.card1.title">The Gateway</h3>
+            <p data-i18n="hero.card1.desc">Connecting elite African companies, government agencies, and entrepreneurs directly to the capital markets and business ecosystem of Dubai.</p>
+          </div>
+
+          <div class="glass-card hero-overlay-card" data-reveal="fade-up" data-delay="100">
+            <div class="card-glow"></div>
+            <div class="card-icon-box">
+              <i class="ph ph-handshake text-gold"></i>
+            </div>
+            <h3 data-i18n="hero.card2.title">Strategic Alignment</h3>
+            <p data-i18n="hero.card2.desc">Facilitating bilateral trade agreements, major joint ventures, and sustainable project financing in highly profitable emerging sectors.</p>
+          </div>
+
+          <div class="glass-card hero-overlay-card" data-reveal="fade-up" data-delay="200">
+            <div class="card-glow"></div>
+            <div class="card-icon-box">
+              <i class="ph ph-currency-dollar text-gold"></i>
+            </div>
+            <h3 data-i18n="hero.card3.title">Investment Pipeline</h3>
+            <p data-i18n="hero.card3.desc">Unlocking access to sovereign wealth funds, private equity hubs, venture capitalists, and premium family offices in the Gulf region.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat-item" data-reveal="fade">
+            <div class="stat-number"><span class="counter" data-target="500">0</span>+</div>
+            <div class="stat-label" data-i18n="stats.leaders">Business Leaders</div>
+          </div>
+          <div class="stat-item" data-reveal="fade" data-delay="100">
+            <div class="stat-number"><span class="counter" data-target="40">0</span>+</div>
+            <div class="stat-label" data-i18n="stats.funds">Investment Funds</div>
+          </div>
+          <div class="stat-item" data-reveal="fade" data-delay="200">
+            <div class="stat-number"><span class="counter" data-target="25">0</span>+</div>
+            <div class="stat-label" data-i18n="stats.countries">Countries</div>
+          </div>
+          <div class="stat-item" data-reveal="fade" data-delay="300">
+            <div class="stat-number">$<span class="counter" data-target="2">0</span>B+</div>
+            <div class="stat-label" data-i18n="stats.opportunities">Investment Opportunities</div>
+          </div>
+          <div class="stat-item" data-reveal="fade" data-delay="400">
+            <div class="stat-number"><span class="counter" data-target="150">0</span>+</div>
+            <div class="stat-label" data-i18n="stats.meetings">Strategic Meetings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Overview Section -->
+    <section class="about-section" id="about">
+      <div class="wrap about-centered">
+        <div class="about-content" data-reveal="fade-up">
+          <span class="section-tag font-mono" data-i18n="about.eyebrow">ABOUT THE FORUM</span>
+          <h2 class="section-title" data-i18n="about.title">The Strategic Bridge Between West Africa & the Gulf</h2>
+          <p class="section-desc" data-i18n="about.desc">
+            The IVOIRE-DUBAI INVESTMENT FORUM 2026 marks the 3rd edition of a must-attend event between the West African business community and the Dubai Chambers. For three days, Abidjan welcomes a delegation led by Mr. Cyril Darkwa, Representative of the Dubai Chambers for West Africa, for a program structured around two complementary objectives:
+          </p>
+          <div class="about-bullets">
+            <div class="bullet-item">
+              <div class="bullet-icon"><i class="ph ph-vault"></i></div>
+              <div>
+                <h4 data-i18n="about.bullet1.title">Showcase Dubai's opportunities</h4>
+                <p data-i18n="about.bullet1.desc">Introduce Ivorian and West African entrepreneurs, investors and businesses to concrete opportunities for establishment, investment and commercial development in Dubai and the United Arab Emirates.</p>
+              </div>
+            </div>
+            <div class="bullet-item">
+              <div class="bullet-icon"><i class="ph ph-chart-line-up"></i></div>
+              <div>
+                <h4 data-i18n="about.bullet2.title">Identify concrete partnerships</h4>
+                <p data-i18n="about.bullet2.desc">Visit key Ivorian businesses and institutions, sector by sector, to detect partnership opportunities, investment flows, and market entry strategies between Côte d'Ivoire and the UAE.</p>
+              </div>
+            </div>
+          </div>
+          <p class="section-desc" data-i18n="about.footer" style="margin-top: 32px;">
+            100 Ivorian companies, selected across the country's main economic sectors, will participate in this forum.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guest of Honor Section -->
+    <section class="guest-section" id="guest-of-honor">
+      <div class="wrap grid-split">
+        <div class="guest-visual" data-reveal="fade-right">
+          <div class="image-wrapper">
+            <img src="assets/cyril_darkwa.jpeg" alt="Guest of Honor" class="zoom-on-hover" style="height: 500px; width: 100%; object-fit: cover; object-position: top;">
+            <div class="glass-backdrop-badge" style="bottom: 16px; left: 16px; padding: 12px 16px; background: rgba(7, 29, 73, 0.7); backdrop-filter: blur(12px); border-radius: 4px; position: absolute;">
+              <span class="badge-desc" data-i18n="guest.badge" style="color: var(--color-gold); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Special Guest</span>
+            </div>
+          </div>
+        </div>
+        <div class="guest-content" data-reveal="fade-left" style="display: flex; flex-direction: column; justify-content: center;">
+          <span class="section-tag font-mono" data-i18n="guest.eyebrow">GUEST OF HONOR</span>
+          <h2 class="section-title" data-i18n="guest.name" style="margin-bottom: 8px;">Guest Name</h2>
+          <h4 data-i18n="guest.title" style="color: var(--color-gold); font-size: 1.1rem; margin-bottom: 24px; font-weight: 400;">Guest Title</h4>
+          
+          <div style="margin-bottom: 16px;">
+            <strong data-i18n="guest.bio.title" style="color: white; font-size: 1.05rem; display: block; margin-bottom: 8px;">Biography</strong>
+            <p class="section-desc" data-i18n="guest.bio.desc" style="font-size: 0.95rem;">Biography description.</p>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <strong data-i18n="guest.mission.title" style="color: white; font-size: 1.05rem; display: block; margin-bottom: 8px;">Mission</strong>
+            <p class="section-desc" data-i18n="guest.mission.desc" style="font-size: 0.95rem;">Mission description.</p>
+          </div>
+          
+          <div>
+            <strong data-i18n="guest.role.title" style="color: white; font-size: 1.05rem; display: block; margin-bottom: 8px;">Role</strong>
+            <p class="section-desc" data-i18n="guest.role.desc" style="font-size: 0.95rem;">Role description.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparative Section: Why Dubai & Why Côte d'Ivoire? -->
+    <section class="comparative-section" id="why-dubai">
+      <div class="wrap">
+        <div class="section-header-centered" data-reveal="fade-up">
+          <span class="section-tag font-mono" data-i18n="why.eyebrow">EXECUTIVE ADVANTAGES</span>
+          <h2 class="section-title" data-i18n="why.title">Bilateral Economic Catalysts</h2>
+          <p class="section-desc" data-i18n="why.desc">Understand why this summit connects two of the world's most dynamic and complementary economic ecosystems.</p>
+        </div>
+
+        <div class="grid-split gap-large">
+          <!-- Why Dubai Grid -->
+          <div class="glass-panel ecosystem-panel" data-reveal="fade-right">
+            <div class="panel-header header-dubai">
+              <h3 data-i18n="why.dubai.title">Why Dubai?</h3>
+              <p data-i18n="why.dubai.subtitle">The Global Capital Hub</p>
+            </div>
+            <div class="panel-body">
+              <ul class="benefit-list">
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.dubai.b1.title">100% Foreign Ownership</strong>
+                    <span data-i18n="why.dubai.b1.desc">Full operational ownership in free zones with zero capital repatriation limits.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.dubai.b2.title">Tax Advantages & Free Capital Flows</strong>
+                    <span data-i18n="why.dubai.b2.desc">Extremely competitive corporate tax structure and zero personal income taxation.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.dubai.b3.title">Global Logistics & Connectivity</strong>
+                    <span data-i18n="why.dubai.b3.desc">World-class aviation and maritime hubs connecting Europe, Asia, and Africa.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.dubai.b4.title">Innovation Ecosystem</strong>
+                    <span data-i18n="why.dubai.b4.desc">Gateway to global AI hubs, venture funds, fintech sandboxes, and web3 technologies.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Why Cote d'Ivoire Grid -->
+          <div class="glass-panel ecosystem-panel" data-reveal="fade-left">
+            <div class="panel-header header-ci">
+              <h3 data-i18n="why.ci.title">Why Côte d'Ivoire?</h3>
+              <p data-i18n="why.ci.subtitle">The Gateway to West Africa</p>
+            </div>
+            <div class="panel-body">
+              <ul class="benefit-list">
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.ci.b1.title">Fastest Growing African Economy</strong>
+                    <span data-i18n="why.ci.b1.desc">Consistent double-digit infrastructure growth and political macroeconomic stability.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.ci.b2.title">Gateway to the UEMOA Region</strong>
+                    <span data-i18n="why.ci.b2.desc">A single market of over 120 million consumers utilizing the stable currency system.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.ci.b3.title">Deepwater Ports & Logistics Expansion</strong>
+                    <span data-i18n="why.ci.b3.desc">Major strategic ports in Abidjan and San Pedro serving landlocked West African nations.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="ph ph-check-circle text-gold"></i>
+                  <div>
+                    <strong data-i18n="why.ci.b4.title">Untapped Industrial Sectors</strong>
+                    <span data-i18n="why.ci.b4.desc">Vast investment potentials in Agriculture, Energy, Mining, Tech, and Tourism.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- Forum Highlights Section -->
+    <section class="highlights-section" id="highlights">
+      <div class="wrap">
+        <div class="section-header-centered" data-reveal="fade-up">
+          <span class="section-tag font-mono" data-i18n="high.eyebrow">AGENDA HIGHLIGHTS</span>
+          <h2 class="section-title" data-i18n="high.title">Forum Structure & Key Highlights</h2>
+          <p class="section-desc" data-i18n="high.desc">Experience exclusive networking events, bilateral governmental roundtables, and major venture pitches.</p>
+        </div>
+
+        <div class="highlights-grid">
+          <!-- Highlight 1 -->
+          <div class="glass-card highlight-card" data-reveal="fade-up">
+            <div class="card-banner font-serif">01</div>
+            <h3 data-i18n="high.card1.title">International Conferences</h3>
+            <p data-i18n="high.card1.desc">Keynotes from global economic directors, geopolitical analysts, and investment officers focusing on Africa-GCC trade corridors.</p>
+          </div>
+          <!-- Highlight 2 -->
+          <div class="glass-card highlight-card" data-reveal="fade-up" data-delay="100">
+            <div class="card-banner font-serif">02</div>
+            <h3 data-i18n="high.card2.title">B2B Investment Matchmaking</h3>
+            <p data-i18n="high.card2.desc">Scheduled private sessions matching vetted African infrastructure projects with Gulf developers and asset managers.</p>
+          </div>
+          <!-- Highlight 3 -->
+          <div class="glass-card highlight-card" data-reveal="fade-up" data-delay="200">
+            <div class="card-banner font-serif">03</div>
+            <h3 data-i18n="high.card3.title">Government Dialogues</h3>
+            <p data-i18n="high.card3.desc">High-level ministerial talks establishing regulatory frameworks, double-taxation treaties, and customized investment policies.</p>
+          </div>
+          <!-- Highlight 4 -->
+          <div class="glass-card highlight-card" data-reveal="fade-up">
+            <div class="card-banner font-serif">04</div>
+            <h3 data-i18n="high.card4.title">Venture Pitch Arena</h3>
+            <p data-i18n="high.card4.desc">A selective platform highlighting the top 20 high-growth West African scale-ups presenting to venture funds and family offices.</p>
+          </div>
+          <!-- Highlight 5 -->
+          <div class="glass-card highlight-card" data-reveal="fade-up" data-delay="100">
+            <div class="card-banner font-serif">05</div>
+            <h3 data-i18n="high.card5.title">Gala Dinner & Awards</h3>
+            <p data-i18n="high.card5.desc">An elite networking banquet honoring outstanding bilateral projects, pioneer investment partnerships, and diplomatic leaders.</p>
+          </div>
+          <!-- Highlight 6 -->
+          <div class="glass-card highlight-card" data-reveal="fade-up" data-delay="200">
+            <div class="card-banner font-serif">06</div>
+            <h3 data-i18n="high.card6.title">Exhibition Pavilions</h3>
+            <p data-i18n="high.card6.desc">Exclusive display zones showcasing major infrastructure models, agribusiness assets, and tech platforms from both ecosystems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section class="speakers-section" id="speakers">
+      <div class="wrap">
+        <div class="section-header-centered" data-reveal="fade-up">
+          <span class="section-tag font-mono" data-i18n="speakers.eyebrow">SUMMIT PANELISTS</span>
+          <h2 class="section-title" data-i18n="speakers.title">Distinguished Speakers</h2>
+          <p class="section-desc" data-i18n="speakers.desc">Learn from global economic pioneers, sovereign trust managers, and pioneering market creators.</p>
+        </div>
+
+        <div class="speakers-grid">
+          <!-- Speaker 1 -->
+          <div class="glass-card speaker-card" data-reveal="fade-up">
+            <div class="speaker-image-box">
+              <img src="assets/speaker_1.png" alt="Fariq Al-Mansoor, Managing Partner at Gulf Venture Partners" loading="lazy">
+              <div class="speaker-overlay-social">
+                <a href="#" aria-label="LinkedIn Profile"><i class="ph ph-linkedin-logo"></i></a>
+              </div>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country text-gold font-mono">DUBAI, UAE</span>
+              <h3>Fariq Al-Mansoor</h3>
+              <p class="speaker-title" data-i18n="speakers.s1.title">Managing Partner, Gulf Venture Partners</p>
+              <p class="speaker-desc" data-i18n="speakers.s1.desc">Over 20 years facilitating institutional capital flows between Gulf sovereign funds and emerging markets.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 2 -->
+          <div class="glass-card speaker-card" data-reveal="fade-up" data-delay="100">
+            <div class="speaker-image-box">
+              <img src="assets/speaker_2.png" alt="Dr. Aminata Touré, Director of Ministry of Infrastructure development" loading="lazy">
+              <div class="speaker-overlay-social">
+                <a href="#" aria-label="LinkedIn Profile"><i class="ph ph-linkedin-logo"></i></a>
+              </div>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country text-gold font-mono">CÔTE D'IVOIRE</span>
+              <h3>Dr. Aminata Touré</h3>
+              <p class="speaker-title" data-i18n="speakers.s2.title">Director of Infrastructure Development</p>
+              <p class="speaker-desc" data-i18n="speakers.s2.desc">Leading macroeconomic initiatives for urban development and transport hubs across West Africa.</p>
+            </div>
+          </div>
+
+          <!-- Speaker 3 -->
+          <div class="glass-card speaker-card" data-reveal="fade-up" data-delay="200">
+            <div class="speaker-image-box">
+              <img src="assets/speaker_3.png" alt="Adeniyi Balogun, Managing Director at West African Development Bank" loading="lazy">
+              <div class="speaker-overlay-social">
+                <a href="#" aria-label="LinkedIn Profile"><i class="ph ph-linkedin-logo"></i></a>
+              </div>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country text-gold font-mono">NIGERIA / ECOWAS</span>
+              <h3>Adeniyi Balogun</h3>
+              <p class="speaker-title" data-i18n="speakers.s3.title">Managing Director, West African Bank Group</p>
+              <p class="speaker-desc" data-i18n="speakers.s3.desc">Pioneering structural project financing and public-private partnership models in the UEMOA zone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners / Sponsors Infinite Marquee -->
+    <section class="partners-section" id="partners">
+      <div class="marquee-title font-mono text-gold" data-i18n="partners.title">SUPPORTED BY GLOBAL TRUSTED INSTITUTIONS</div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <!-- Set 1 -->
+          <span class="partner-word"><i class="ph ph-buildings text-gold"></i> DUBAI CHAMBER</span>
+          <span class="partner-word"><i class="ph ph-bank text-gold"></i> UEMOA CAPITAL</span>
+          <span class="partner-word"><i class="ph ph-shield-chevron text-gold"></i> BOAD TRUST</span>
+          <span class="partner-word"><i class="ph ph-scales text-gold"></i> GLOBAL VENTURES</span>
+          <span class="partner-word"><i class="ph ph-globe text-gold"></i> EMIRATES TRADE</span>
+          <span class="partner-word"><i class="ph ph-chart-bar text-gold"></i> ECOWAS PARTNERS</span>
+          <!-- Set 2 (Duplicated for infinite animation loop) -->
+          <span class="partner-word"><i class="ph ph-buildings text-gold"></i> DUBAI CHAMBER</span>
+          <span class="partner-word"><i class="ph ph-bank text-gold"></i> UEMOA CAPITAL</span>
+          <span class="partner-word"><i class="ph ph-shield-chevron text-gold"></i> BOAD TRUST</span>
+          <span class="partner-word"><i class="ph ph-scales text-gold"></i> GLOBAL VENTURES</span>
+          <span class="partner-word"><i class="ph ph-globe text-gold"></i> EMIRATES TRADE</span>
+          <span class="partner-word"><i class="ph ph-chart-bar text-gold"></i> ECOWAS PARTNERS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section (Masonry Grid) -->
+    <section class="gallery-section" id="gallery">
+      <div class="wrap">
+        <div class="section-header-centered" data-reveal="fade-up">
+          <span class="section-tag font-mono" data-i18n="gallery.eyebrow">SUMMIT ATMOSPHERE</span>
+          <h2 class="section-title" data-i18n="gallery.title">Media & Summit Gallery</h2>
+          <p class="section-desc" data-i18n="gallery.desc">Glimpses of diplomatic collaboration, business signing ceremonies, and regional development projects.</p>
+        </div>
+
+        <div class="masonry-gallery">
+          <div class="gallery-item item-wide" data-reveal="fade-up">
+            <img src="assets/whatsapp_image.jpeg" alt="Signature d'accord bilatéral" loading="lazy">
+            <div class="gallery-caption">
+              <h4 data-i18n="gallery.c1.title">Bilateral Deal Signing</h4>
+              <p data-i18n="gallery.c1.desc">Abidjan 2026</p>
+            </div>
+          </div>
+          <div class="gallery-item item-tall" data-reveal="fade-up" data-delay="100">
+            <img src="assets/whatsapp_image_4.jpeg" alt="Real Estate Showcase" loading="lazy">
+            <div class="gallery-caption">
+              <h4 data-i18n="gallery.c2.title">Real Estate Showcase</h4>
+              <p data-i18n="gallery.c2.desc">Architecture of the Future</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-reveal="fade-up" data-delay="200">
+            <img src="assets/whatsapp_image_3.jpeg" alt="Strategic business roundtable" loading="lazy">
+            <div class="gallery-caption">
+              <h4 data-i18n="gallery.c3.title">Investor Roundtable</h4>
+              <p data-i18n="gallery.c3.desc">Dubai & African Funds</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-reveal="fade-up" data-delay="300">
+            <img src="assets/whatsapp_image_2.jpeg" alt="Dubai skyline" loading="lazy">
+            <div class="gallery-caption">
+              <h4 data-i18n="gallery.c4.title">Dubai Excellence</h4>
+              <p data-i18n="gallery.c4.desc">Economic Partnership</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration / Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="wrap grid-split">
+        <div class="contact-info-panel" data-reveal="fade-right">
+          <span class="section-tag font-mono" data-i18n="contact.eyebrow">SUMMIT ACCREDITATION</span>
+          <h2 class="section-title" data-i18n="contact.title">Secure Your Exclusive Access</h2>
+          <p class="section-desc" data-i18n="contact.desc">
+            Attendance at the Dubai Business Investment Forum is strictly reserved for corporate leaders, private equity officers, government delegations, and accredited journalists.
+          </p>
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <strong data-i18n="contact.venue.lbl">Venue</strong>
+                <span>UTC Hôtel Ivoire, Côte d'Ivoire</span>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div>
+                <strong data-i18n="contact.dates.lbl">Summit Dates</strong>
+                <span data-i18n="contact.dates.val">15, 16 et 17 juillet 2026</span>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <strong data-i18n="contact.inquiry.lbl">General Inquiry</strong>
+                <span>accreditations@dbiforums.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glassmorphism Registration Form -->
+        <div class="glass-panel registration-form-box" data-reveal="fade-left">
+          <form id="register-form" class="reg-form" action="#" method="POST">
+            <div class="form-title">
+              <h3 data-i18n="contact.form.title">Delegate Accreditation</h3>
+              <p data-i18n="contact.form.desc">Please supply your professional credentials below.</p>
+            </div>
+
+            <div class="form-feedback" id="form-msg" aria-live="polite"></div>
+
+            <div class="form-group">
+              <label for="reg-name" data-i18n="contact.form.name">Full Name</label>
+              <input type="text" id="reg-name" required placeholder="e.g. Jean-Marc Konan" data-i18n-placeholder="contact.form.name.ph">
+            </div>
+
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="reg-org" data-i18n="contact.form.org">Organization</label>
+                <input type="text" id="reg-org" required placeholder="e.g. Africa Capital Partners" data-i18n-placeholder="contact.form.org.ph">
+              </div>
+              <div class="form-group">
+                <label for="reg-role" data-i18n="contact.form.role">Job Title</label>
+                <input type="text" id="reg-role" required placeholder="e.g. Chief Investment Officer" data-i18n-placeholder="contact.form.role.ph">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email" data-i18n="contact.form.email">Corporate Email Address</label>
+              <input type="email" id="reg-email" required placeholder="e.g. jm.konan@africacapital.com" data-i18n-placeholder="contact.form.email.ph">
+            </div>
+
+            <div class="form-group">
+              <label for="reg-interest" data-i18n="contact.form.sector">Primary Sector of Interest</label>
+              <select id="reg-interest" required>
+                <option value="" disabled selected data-i18n="contact.form.select">Select interest area...</option>
+                <option value="realestate" data-i18n="contact.form.opt1">Real Estate & Smart Cities</option>
+                <option value="infrastructure" data-i18n="contact.form.opt2">Infrastructure & Logistics</option>
+                <option value="technology" data-i18n="contact.form.opt3">Technology & FinTech</option>
+                <option value="energy" data-i18n="contact.form.opt4">Energy & Power Grid</option>
+                <option value="agriculture" data-i18n="contact.form.opt5">Agriculture & Food Processing</option>
+                <option value="other" data-i18n="contact.form.opt6">Government Partnerships</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-gold w-full mt-4" id="submit-btn">
+              <span data-i18n="contact.form.submit">Submit Accreditation Request</span>
+              <i class="ph ph-paper-plane-tilt"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer-section">
+    <div class="wrap footer-grid">
+      <!-- Info Column -->
+      <div class="footer-col col-info">
+        <div class="footer-logo">
+          <img src="logodsv.png" alt="DBIF Logo" class="logo-img">
+        </div>
+        <p class="footer-about-text" data-i18n="footer.desc">
+          Unlocking bilateral trade corridors, joint investment infrastructure and high-yield capital pipelines connecting Côte d'Ivoire and Dubai.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+          <a href="#" aria-label="Twitter"><i class="ph ph-twitter-logo"></i></a>
+          <a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+        </div>
+      </div>
+
+      <!-- Links Column 1 -->
+      <div class="footer-col col-links-1">
+        <h4 data-i18n="footer.core">Summit Core</h4>
+        <ul class="footer-links">
+          <li><a href="#about" data-i18n="nav.about">About the Forum</a></li>
+          <li><a href="#why-dubai" data-i18n="nav.forum">Ecosystem Advantages</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 2 -->
+      <div class="footer-col col-links-2">
+        <h4 data-i18n="footer.info">Delegate Info</h4>
+        <ul class="footer-links">
+          <li><a href="#speakers" data-i18n="nav.speakers">Distinguished Speakers</a></li>
+          <li><a href="#highlights" data-i18n="nav.program">Agenda Highlights</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Media Gallery</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Apply for Accreditation</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom wrap">
+      <p data-i18n="footer.copy">&copy; 2026 Dubai Business Investment Forum. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="#" data-i18n="footer.terms">Terms of Use</a>
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" id="grid-toggle" data-i18n="footer.grid">Grid System Toggle (G)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Javascript File -->
+  <script src="app.js"></script>
+</body>
+</html>
