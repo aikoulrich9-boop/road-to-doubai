@@ -2112,3 +2112,185 @@ body.grid-on .guides {
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
   transition: transform 0.1s ease;
 }
+
+/* ==========================================================================
+   11. BILINGUAL INTRO POP-UP STYLES
+   ========================================================================== */
+body.intro-popup-active {
+  overflow: hidden !important;
+  touch-action: none; /* Disables mobile touch-scrolling */
+  height: 100vh;
+}
+
+body.intro-popup-active .navbar,
+body.intro-popup-active main,
+body.intro-popup-active footer,
+body.intro-popup-active .whatsapp-float {
+  filter: blur(10px);
+  pointer-events: none;
+  transition: filter 0.8s var(--ease-premium);
+}
+
+.intro-popup-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999999;
+  background: rgba(7, 21, 53, 0.7); /* Matching the royal blue theme background */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s var(--ease-premium), visibility 0.6s var(--ease-premium);
+}
+
+.intro-popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.intro-popup-card {
+  width: min(480px, 92%);
+  background: linear-gradient(135deg, rgba(11, 23, 53, 0.75) 0%, rgba(7, 29, 73, 0.5) 100%);
+  border: 1px solid rgba(217, 164, 65, 0.2); /* Subtle Gold border */
+  border-radius: 24px;
+  padding: 48px 36px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(217, 164, 65, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.6s var(--ease-premium);
+}
+
+.intro-popup-overlay.active .intro-popup-card {
+  transform: scale(1);
+}
+
+/* Subtle background glowing orb in pop-up */
+.intro-popup-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(217, 164, 65, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.intro-popup-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-popup-logo {
+  margin-bottom: 24px;
+}
+
+.popup-logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.intro-popup-badge {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-gold);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.intro-popup-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-text-white);
+  margin-bottom: 24px;
+}
+
+.intro-popup-title span[data-i18n="popup.title"] {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+.intro-popup-title .popup-edition {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.intro-popup-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+  margin: 24px auto;
+}
+
+.intro-popup-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.intro-popup-meta .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-light-gray);
+}
+
+.intro-popup-meta .meta-item i {
+  font-size: 1.2rem;
+}
+
+.intro-popup-btn {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 16px 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-premium);
+}
+
+.intro-popup-btn i {
+  transition: transform 0.3s var(--ease-premium);
+}
+
+.intro-popup-btn:hover i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .intro-popup-card {
+    padding: 36px 24px;
+  }
+  .intro-popup-title {
+    font-size: 1.75rem;
+  }
+  .intro-popup-title .popup-edition {
+    font-size: 1.25rem;
+  }
+  .intro-popup-meta .meta-item {
+    font-size: 0.85rem;
+  }
+}

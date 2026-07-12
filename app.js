@@ -227,7 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
+      const name = document.getElementById('reg-name').value;
+      const org = document.getElementById('reg-org').value;
+      const role = document.getElementById('reg-role').value;
       const email = document.getElementById('reg-email').value;
+      
+      const interestSelect = document.getElementById('reg-interest');
+      const interest = interestSelect ? interestSelect.options[interestSelect.selectedIndex].text : '';
+      
       const isCorporate = !/gmail\.com$|yahoo\.com$|hotmail\.com$|outlook\.com$|mail\.ru$/i.test(email);
       const currentLang = localStorage.getItem('preferredLang') || 'en';
 
@@ -239,6 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       submitBtn.disabled = true;
       submitBtn.querySelector('span').textContent = translations[currentLang]["msg.processing"];
+
+      // Build structured text message template for WhatsApp
+      const message = currentLang === 'fr'
+        ? `🔴 *NOUVELLE ACCRÉDITATION - DBIF 2026* 🔴\n\nBonjour, une nouvelle demande d'accréditation a été soumise depuis le site internet :\n\n👤 *Nom Complet :* ${name}\n🏢 *Organisation :* ${org}\n💼 *Titre du Poste :* ${role}\n📧 *E-mail Professionnel :* ${email}\n🎯 *Secteur d'Intérêt :* ${interest}\n\n---\n_Envoyé depuis le site officiel de Dubai Business Investment Forum_`
+        : `🔴 *NEW ACCREDITATION REQUEST - DBIF 2026* 🔴\n\nHello, a new accreditation request has been submitted from the website:\n\n👤 *Full Name :* ${name}\n🏢 *Organization :* ${org}\n💼 *Job Title :* ${role}\n📧 *Corporate Email :* ${email}\n🎯 *Sector of Interest :* ${interest}\n\n---\n_Sent from the official Dubai Business Investment Forum website_`;
+
+      // Open WhatsApp link immediately in a new tab (bypasses browser popup blocker)
+      const whatsappUrl = `https://wa.me/2250717659292?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
 
       // Simulate API submit latency
       setTimeout(() => {
@@ -329,6 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const translations = {
     en: {
+      "popup.eyebrow": "DUBAI BUSINESS INVESTMENT FORUM",
+      "popup.title": "PRE-FORUM",
+      "popup.subtitle": "DUBAI & CÔTE D'IVOIRE",
+      "popup.dates": "July 15 · 16 · 17, 2026",
+      "popup.location": "Abidjan · Côte d'Ivoire",
+      "popup.btn": "ENTER THE SITE",
       "shuffler.c1.title": "Abidjan Hub",
       "shuffler.c1.desc": "Corporate Entry Point",
       "shuffler.c2.title": "Dubai Chamber",
@@ -510,6 +532,12 @@ document.addEventListener('DOMContentLoaded', () => {
       "msg.newsletter_success": "Accredited to newsletter briefing list."
     },
     fr: {
+      "popup.eyebrow": "DUBAI BUSINESS INVESTMENT FORUM",
+      "popup.title": "PRÉ-FORUM",
+      "popup.subtitle": "DUBAI & CÔTE D'IVOIRE",
+      "popup.dates": "15 · 16 · 17 Juillet 2026",
+      "popup.location": "Abidjan · Côte d'Ivoire",
+      "popup.btn": "VISITER LE SITE",
       "shuffler.c1.title": "Abidjan Hub",
       "shuffler.c1.desc": "Point d'entrée corporatif",
       "shuffler.c2.title": "Dubai Chamber",
@@ -730,6 +758,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('preferredLang');
   const defaultLang = savedLang || (navigator.language.startsWith('fr') ? 'fr' : 'en');
   updateLanguage(defaultLang);
+
+  // Initialize and display the intro pop-up, locking background scroll
+  document.body.classList.add('intro-popup-active');
+  const introPopup = document.getElementById('intro-popup');
+  if (introPopup) {
+    // Show pop-up after a slight layout delay
+    setTimeout(() => {
+      introPopup.classList.add('active');
+    }, 100);
+
+    const visitBtn = document.getElementById('intro-popup-btn');
+    if (visitBtn) {
+      visitBtn.addEventListener('click', () => {
+        // Animate pop-up elements out with premium easing
+        gsap.to('.intro-popup-card', {
+          opacity: 0,
+          scale: 0.9,
+          duration: 0.5,
+          ease: 'power3.in'
+        });
+
+        gsap.to('#intro-popup', {
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power3.inOut',
+          onComplete: () => {
+            introPopup.style.display = 'none';
+            document.body.classList.remove('intro-popup-active');
+            
+            // Re-align layout spacing after unlocking
+            if (typeof alignDisplayInk === 'function') {
+              alignDisplayInk();
+            }
+          }
+        });
+      });
+    }
+  }
 
   alignDisplayInk();
   window.addEventListener('resize', alignDisplayInk);
