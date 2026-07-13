@@ -1437,14 +1437,65 @@ body.grid-on .guides {
 }
 
 /* Redesigned Form Sections & Checkboxes */
+.form-collapsible-section {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  margin-top: 8px;
+}
+
+.form-collapse-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 16px 0;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition: all 0.3s var(--ease-premium);
+}
+
+.form-collapse-trigger:hover {
+  opacity: 0.85;
+}
+
+.form-collapse-trigger .form-section-title {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.form-collapse-trigger .collapse-icon {
+  font-size: 1.25rem;
+  color: var(--color-accent-gold);
+  transition: transform 0.4s var(--ease-premium);
+}
+
+.form-collapsible-section.active .collapse-icon {
+  transform: rotate(180deg);
+}
+
+.form-collapse-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.4s var(--ease-premium), opacity 0.3s ease, padding 0.3s ease;
+  padding: 0;
+}
+
+.form-collapsible-section.active .form-collapse-content {
+  max-height: 600px;
+  opacity: 1;
+  pointer-events: all;
+  padding-bottom: 24px;
+}
+
 .form-section-title {
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-  padding-bottom: 8px;
   letter-spacing: 0.06em;
 }
 

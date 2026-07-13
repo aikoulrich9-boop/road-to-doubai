@@ -236,6 +236,20 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Toggle collapsible form sections
+    const collapseTriggers = document.querySelectorAll('.form-collapse-trigger');
+    collapseTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent button form trigger
+        const section = trigger.closest('.form-collapsible-section');
+        if (section) {
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+          section.classList.toggle('active');
+          trigger.setAttribute('aria-expanded', !isExpanded);
+        }
+      });
+    });
+
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
           const company = document.getElementById('reg-company').value;
