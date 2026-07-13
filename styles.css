@@ -2297,3 +2297,167 @@ body.intro-popup-active .whatsapp-float {
     font-size: 0.85rem;
   }
 }
+
+/* ==========================================================================
+   PRICING / PARTICIPATION GRID SECTION
+   ========================================================================== */
+.pricing-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: var(--color-bg-mid);
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pricing-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/chatgpt_hero.png?v=3');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.03;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+
+.pricing-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin-inline: auto;
+  margin-top: 48px;
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 2.5rem;
+  padding: 48px;
+  position: relative;
+  transition: all 0.4s var(--ease-premium);
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 0 20px var(--glass-glow);
+  transform: translateY(-8px);
+}
+
+.pricing-card.featured-card {
+  border-color: var(--color-accent-gold);
+  background: linear-gradient(135deg, rgba(16, 61, 135, 0.2) 0%, rgba(11, 23, 53, 0.5) 100%);
+  box-shadow: 0 10px 30px rgba(217, 164, 65, 0.05);
+}
+
+.pricing-card.featured-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent-light-gold), var(--color-accent-gold), var(--color-accent-dark-gold));
+}
+
+.featured-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: var(--color-accent-gold);
+  color: var(--color-bg-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pricing-plan {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-white);
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.pricing-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  min-height: 72px;
+}
+
+.pricing-price-box {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pricing-amount {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+}
+
+.pricing-currency {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-white);
+  margin-left: 8px;
+  letter-spacing: 0.05em;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--color-text-light-gray);
+  line-height: 1.4;
+}
+
+.pricing-features li i {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 60px 0;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-inline: 16px;
+  }
+  .pricing-card {
+    padding: 32px;
+  }
+  .pricing-amount {
+    font-size: 2.75rem;
+  }
+}
