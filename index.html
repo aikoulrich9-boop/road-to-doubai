@@ -574,48 +574,143 @@
         <div class="glass-panel registration-form-box" data-reveal="fade-left">
           <form id="register-form" class="reg-form" action="#" method="POST">
             <div class="form-title">
-              <h3 data-i18n="contact.form.title">Delegate Accreditation</h3>
-              <p data-i18n="contact.form.desc">Please supply your professional credentials below.</p>
+              <h3 data-i18n="contact.form.title">Fiche d'Accréditation</h3>
+              <p data-i18n="contact.form.desc">Veuillez fournir les détails professionnels de votre entreprise ci-dessous.</p>
             </div>
 
             <div class="form-feedback" id="form-msg" aria-live="polite"></div>
 
+            <!-- PART 1: Identité -->
+            <div class="form-section-title font-mono text-gold" data-i18n="contact.form.section1">1. Identité du participant / de l'entreprise</div>
+            
             <div class="form-group">
-              <label for="reg-name" data-i18n="contact.form.name">Full Name</label>
-              <input type="text" id="reg-name" required placeholder="e.g. Jean-Marc Konan" data-i18n-placeholder="contact.form.name.ph">
+              <label for="reg-company" data-i18n="contact.form.company">Nom de l'entreprise</label>
+              <input type="text" id="reg-company" required placeholder="ex. Africa Capital Partners" data-i18n-placeholder="contact.form.company.ph">
             </div>
 
             <div class="form-group-row">
               <div class="form-group">
-                <label for="reg-org" data-i18n="contact.form.org">Organization</label>
-                <input type="text" id="reg-org" required placeholder="e.g. Africa Capital Partners" data-i18n-placeholder="contact.form.org.ph">
+                <label for="reg-sector" data-i18n="contact.form.sector">Secteur d'activité</label>
+                <input type="text" id="reg-sector" required placeholder="ex. Agri-tech, Infrastructure" data-i18n-placeholder="contact.form.sector.ph">
               </div>
               <div class="form-group">
-                <label for="reg-role" data-i18n="contact.form.role">Job Title</label>
-                <input type="text" id="reg-role" required placeholder="e.g. Chief Investment Officer" data-i18n-placeholder="contact.form.role.ph">
+                <label for="reg-rep" data-i18n="contact.form.rep">Nom du représentant</label>
+                <input type="text" id="reg-rep" required placeholder="ex. Jean-Marc Konan" data-i18n-placeholder="contact.form.rep.ph">
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="reg-email" data-i18n="contact.form.email">Corporate Email Address</label>
-              <input type="email" id="reg-email" required placeholder="e.g. jm.konan@africacapital.com" data-i18n-placeholder="contact.form.email.ph">
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="reg-job" data-i18n="contact.form.job">Fonction</label>
+                <input type="text" id="reg-job" required placeholder="ex. Directeur Général" data-i18n-placeholder="contact.form.job.ph">
+              </div>
+              <div class="form-group">
+                <label for="reg-country" data-i18n="contact.form.country">Pays</label>
+                <input type="text" id="reg-country" required placeholder="ex. Côte d'Ivoire" data-i18n-placeholder="contact.form.country.ph">
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="reg-interest" data-i18n="contact.form.sector">Primary Sector of Interest</label>
-              <select id="reg-interest" required>
-                <option value="" disabled selected data-i18n="contact.form.select">Select interest area...</option>
-                <option value="realestate" data-i18n="contact.form.opt1">Real Estate & Smart Cities</option>
-                <option value="infrastructure" data-i18n="contact.form.opt2">Infrastructure & Logistics</option>
-                <option value="technology" data-i18n="contact.form.opt3">Technology & FinTech</option>
-                <option value="energy" data-i18n="contact.form.opt4">Energy & Power Grid</option>
-                <option value="agriculture" data-i18n="contact.form.opt5">Agriculture & Food Processing</option>
-                <option value="other" data-i18n="contact.form.opt6">Government Partnerships</option>
-              </select>
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="reg-phone" data-i18n="contact.form.phone">Téléphone</label>
+                <input type="tel" id="reg-phone" required placeholder="ex. +225 07 00 00 00 00" data-i18n-placeholder="contact.form.phone.ph">
+              </div>
+              <div class="form-group">
+                <label for="reg-email" data-i18n="contact.form.email">E-mail</label>
+                <input type="email" id="reg-email" required placeholder="ex. contact@entreprise.com" data-i18n-placeholder="contact.form.email.ph">
+              </div>
             </div>
 
-            <button type="submit" class="btn btn-gold w-full mt-4" id="submit-btn">
-              <span data-i18n="contact.form.submit">Submit Accreditation Request</span>
+            <!-- PART 2: Motif de la participation -->
+            <div class="form-section-title font-mono text-gold mt-4" data-i18n="contact.form.section2">2. Motif de la participation</div>
+            <div class="checkbox-grid">
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="motif" value="financement">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.m1">Demande de financement</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="motif" value="partenariat">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.m2">Demande de partenariat</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="motif" value="creation_dubai">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.m3">Demande de création d'entreprise à Dubaï</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="motif" value="immobilier">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.m4">Opportunités d'investissement immobilier</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="motif" value="trade_finance">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.m5">Rencontre avec des sociétés de trade finance (crédits export)</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="motif" value="forum_septembre">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.m6">Réservation pour le Forum des Investisseurs et CEO de septembre</span>
+              </label>
+              <div class="form-checkbox-container-special">
+                <label class="form-checkbox-container">
+                  <input type="checkbox" name="motif" value="autre" id="motif-other-checkbox">
+                  <span class="checkbox-custom"></span>
+                  <span data-i18n="contact.form.m7">Autre (préciser)</span>
+                </label>
+                <input type="text" id="reg-motif-other" class="text-input-small mt-2" placeholder="Veuillez préciser..." data-i18n-placeholder="contact.form.m7.ph" style="display:none;">
+              </div>
+            </div>
+
+            <!-- PART 3: Journées souhaitées -->
+            <div class="form-section-title font-mono text-gold mt-4" data-i18n="contact.form.section3">3. Journées de participation souhaitées</div>
+            <div class="checkbox-grid">
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="days" value="day1">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.day1">Jour 1 — 15 juillet (Ouverture, cocktail de bienvenue)</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="days" value="day2">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.day2">Jour 2 — 16 juillet (Tables rondes)</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="days" value="day3">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.day3">Jour 3 — 17 juillet (Point de presse, cérémonie de lancement)</span>
+              </label>
+            </div>
+
+            <!-- PART 4: Documents joints -->
+            <div class="form-section-title font-mono text-gold mt-4" data-i18n="contact.form.section4">4. Documents joints (le cas échéant)</div>
+            <div class="checkbox-grid">
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="docs" value="doc1">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.doc1">Dossier de partenariat</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="docs" value="doc2">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.doc2">Dossier de demande de financement</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="docs" value="doc3">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.doc3">Présentation de l'entreprise (Pitch deck)</span>
+              </label>
+              <label class="form-checkbox-container">
+                <input type="checkbox" name="docs" value="doc4">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="contact.form.doc4">Autre document</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-gold w-full mt-6" id="submit-btn">
+              <span data-i18n="contact.form.submit">Soumettre la demande d'accréditation</span>
               <span class="btn-hover-bg"></span>
               <i class="ph ph-paper-plane-tilt"></i>
             </button>

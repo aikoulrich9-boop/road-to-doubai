@@ -224,17 +224,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
 
   if (registerForm) {
+    // Toggle visibility of the 'Autre' text field
+    const otherCheckbox = document.getElementById('motif-other-checkbox');
+    const otherInput = document.getElementById('reg-motif-other');
+    if (otherCheckbox && otherInput) {
+      otherCheckbox.addEventListener('change', (e) => {
+        otherInput.style.display = e.target.checked ? 'block' : 'none';
+        if (e.target.checked) {
+          otherInput.focus();
+        }
+      });
+    }
+
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const name = document.getElementById('reg-name').value;
-      const org = document.getElementById('reg-org').value;
-      const role = document.getElementById('reg-role').value;
+          const company = document.getElementById('reg-company').value;
+      const sector = document.getElementById('reg-sector').value;
+      const rep = document.getElementById('reg-rep').value;
+      const job = document.getElementById('reg-job').value;
+      const country = document.getElementById('reg-country').value;
+      const phone = document.getElementById('reg-phone').value;
       const email = document.getElementById('reg-email').value;
       
-      const interestSelect = document.getElementById('reg-interest');
-      const interest = interestSelect ? interestSelect.options[interestSelect.selectedIndex].text : '';
-      
+      // Get selected participation motives
+      const motifs = [];
+      document.querySelectorAll('input[name="motif"]:checked').forEach(cb => {
+        if (cb.value === 'autre') {
+          const otherVal = document.getElementById('reg-motif-other').value.trim();
+          motifs.push(otherVal ? `Autre : ${otherVal}` : 'Autre');
+        } else {
+          const lblNode = cb.closest('.form-checkbox-container').querySelector('span[data-i18n]');
+          motifs.push(lblNode ? lblNode.textContent.trim() : cb.value);
+        }
+      });
+
+      // Get selected days
+      const days = [];
+      document.querySelectorAll('input[name="days"]:checked').forEach(cb => {
+        const lblNode = cb.closest('.form-checkbox-container').querySelector('span[data-i18n]');
+        days.push(lblNode ? lblNode.textContent.trim() : cb.value);
+      });
+
+      // Get selected documents
+      const docs = [];
+      document.querySelectorAll('input[name="docs"]:checked').forEach(cb => {
+        const lblNode = cb.closest('.form-checkbox-container').querySelector('span[data-i18n]');
+        docs.push(lblNode ? lblNode.textContent.trim() : cb.value);
+      });
+
       const isCorporate = !/gmail\.com$|yahoo\.com$|hotmail\.com$|outlook\.com$|mail\.ru$/i.test(email);
       const currentLang = localStorage.getItem('preferredLang') || 'en';
 
@@ -248,12 +285,46 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.querySelector('span').textContent = translations[currentLang]["msg.processing"];
 
       // Build structured text message template for WhatsApp
-      const message = currentLang === 'fr'
-        ? `🔴 *NOUVELLE ACCRÉDITATION - DBIF 2026* 🔴\n\nBonjour, une nouvelle demande d'accréditation a été soumise depuis le site internet :\n\n👤 *Nom Complet :* ${name}\n🏢 *Organisation :* ${org}\n💼 *Titre du Poste :* ${role}\n📧 *E-mail Professionnel :* ${email}\n🎯 *Secteur d'Intérêt :* ${interest}\n\n---\n_Envoyé depuis le site officiel de Dubai Business Investment Forum_`
-        : `🔴 *NEW ACCREDITATION REQUEST - DBIF 2026* 🔴\n\nHello, a new accreditation request has been submitted from the website:\n\n👤 *Full Name :* ${name}\n🏢 *Organization :* ${org}\n💼 *Job Title :* ${role}\n📧 *Corporate Email :* ${email}\n🎯 *Sector of Interest :* ${interest}\n\n---\n_Sent from the official Dubai Business Investment Forum website_`;
+      let message = '';
+      if (currentLang === 'fr') {
+        message = `🔴 *NOUVELLE FICHE D'ACCRÉDITATION - DBIF 2026* 🔴\n\n` +
+                  `*1. IDENTITÉ DU PARTICIPANT / ENTREPRISE :*\n` +
+                  `🏢 *Entreprise :* ${company}\n` +
+                  `💼 *Secteur d'Activité :* ${sector}\n` +
+                  `👤 *Représentant :* ${rep}\n` +
+                  `👔 *Fonction :* ${job}\n` +
+                  `🌍 *Pays :* ${country}\n` +
+                  `📞 *Téléphone :* ${phone}\n` +
+                  `📧 *E-mail :* ${email}\n\n` +
+                  `*2. MOTIF DE LA PARTICIPATION :*\n` +
+                  (motifs.length > 0 ? motifs.map(m => `• ${m}`).join('\n') : `• Aucun motif sélectionné`) + `\n\n` +
+                  `*3. JOURNÉES DE PARTICIPATION SOUHAITÉES :*\n` +
+                  (days.length > 0 ? days.map(d => `• ${d}`).join('\n') : `• Aucune journée sélectionnée`) + `\n\n` +
+                  `*4. DOCUMENTS JOINTS :*\n` +
+                  (docs.length > 0 ? docs.map(dc => `• ${dc}`).join('\n') : `• Aucun document joint`) + `\n\n` +
+                  `---\n_Envoyé depuis le site officiel de Dubai Business Investment Forum_`;
+      } else {
+        message = `🔴 *NEW ACCREDITATION REQUEST - DBIF 2026* 🔴\n\n` +
+                  `*1. PARTICIPANT & COMPANY IDENTITY :*\n` +
+                  `🏢 *Company :* ${company}\n` +
+                  `💼 *Sector of Activity :* ${sector}\n` +
+                  `👤 *Representative :* ${rep}\n` +
+                  `👔 *Job Title :* ${job}\n` +
+                  `🌍 *Country :* ${country}\n` +
+                  `📞 *Phone :* ${phone}\n` +
+                  `📧 *Email :* ${email}\n\n` +
+                  `*2. PURPOSE OF PARTICIPATION :*\n` +
+                  (motifs.length > 0 ? motifs.map(m => `• ${m}`).join('\n') : `• No purpose selected`) + `\n\n` +
+                  `*3. DESIRED DAYS OF PARTICIPATION :*\n` +
+                  (days.length > 0 ? days.map(d => `• ${d}`).join('\n') : `• No days selected`) + `\n\n` +
+                  `*4. ATTACHED DOCUMENTS :*\n` +
+                  (docs.length > 0 ? docs.map(dc => `• ${dc}`).join('\n') : `• No documents attached`) + `\n\n` +
+                  `---\n_Sent from the official Dubai Business Investment Forum website_`;
+      }
 
       // Open WhatsApp link immediately in a new tab (bypasses browser popup blocker)
       const whatsappUrl = `https://wa.me/2250717659292?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');essage)}`;
       window.open(whatsappUrl, '_blank');
 
       // Simulate API submit latency
@@ -513,25 +584,42 @@ document.addEventListener('DOMContentLoaded', () => {
       "contact.dates.lbl": "Summit Dates",
       "contact.dates.val": "July 15, 16 and 17, 2026",
       "contact.inquiry.lbl": "General Inquiry",
-      "contact.form.title": "Delegate Accreditation",
-      "contact.form.desc": "Please supply your professional credentials below.",
-      "contact.form.name": "Full Name",
-      "contact.form.name.ph": "e.g. Jean-Marc Konan",
-      "contact.form.org": "Organization",
-      "contact.form.org.ph": "e.g. Africa Capital Partners",
-      "contact.form.role": "Job Title",
-      "contact.form.role.ph": "e.g. Chief Investment Officer",
+      "contact.form.title": "Accreditation Sheet",
+      "contact.form.desc": "Please provide your corporate and participant details below.",
+      "contact.form.section1": "1. Participant & Company Identity",
+      "contact.form.section2": "2. Purpose of Participation",
+      "contact.form.section3": "3. Desired Days of Participation",
+      "contact.form.section4": "4. Attached Documents (If applicable)",
+      "contact.form.company": "Company Name",
+      "contact.form.company.ph": "e.g. Africa Capital Partners",
+      "contact.form.sector": "Sector of Activity",
+      "contact.form.sector.ph": "e.g. Agri-tech, Infrastructure",
+      "contact.form.rep": "Representative Name",
+      "contact.form.rep.ph": "e.g. Jean-Marc Konan",
+      "contact.form.job": "Job Title / Position",
+      "contact.form.job.ph": "e.g. Chief Executive Officer",
+      "contact.form.country": "Country",
+      "contact.form.country.ph": "e.g. Côte d'Ivoire",
+      "contact.form.phone": "Phone Number",
+      "contact.form.phone.ph": "e.g. +225 07 00 00 00 00",
       "contact.form.email": "Corporate Email Address",
-      "contact.form.email.ph": "e.g. jm.konan@africacapital.com",
-      "contact.form.sector": "Primary Sector of Interest",
-      "contact.form.select": "Select interest area...",
-      "contact.form.opt1": "Real Estate & Smart Cities",
-      "contact.form.opt2": "Infrastructure & Logistics",
-      "contact.form.opt3": "Technology & FinTech",
-      "contact.form.opt4": "Energy & Power Grid",
-      "contact.form.opt5": "Agriculture & Food Processing",
-      "contact.form.opt6": "Government Partnerships",
-      "contact.form.submit": "Submit Accreditation Request",
+      "contact.form.email.ph": "e.g. contact@company.com",
+      "contact.form.m1": "Financing request",
+      "contact.form.m2": "Partnership request",
+      "contact.form.m3": "Company incorporation request in Dubai",
+      "contact.form.m4": "Real estate investment opportunities",
+      "contact.form.m5": "Meeting with trade finance / export credit companies",
+      "contact.form.m6": "Booking for the September Investors & CEOs Forum",
+      "contact.form.m7": "Other (specify)",
+      "contact.form.m7.ph": "Please specify...",
+      "contact.form.day1": "Day 1 — July 15 (Opening, Welcome Cocktail)",
+      "contact.form.day2": "Day 2 — July 16 (Roundtables)",
+      "contact.form.day3": "Day 3 — July 17 (Press Briefing, Launch Ceremony)",
+      "contact.form.doc1": "Partnership file",
+      "contact.form.doc2": "Financing request file",
+      "contact.form.doc3": "Company presentation (Pitch deck)",
+      "contact.form.doc4": "Other document",
+      "contact.form.submit": "Submit Accreditation Form",
       "footer.logo.sub": "INVESTMENT FORUM",
       "footer.desc": "Unlocking bilateral trade corridors, joint investment infrastructure and high-yield capital pipelines connecting Côte d'Ivoire and Dubai.",
       "footer.core": "Summit Core",
@@ -717,24 +805,41 @@ document.addEventListener('DOMContentLoaded', () => {
       "contact.dates.lbl": "Dates du sommet",
       "contact.dates.val": "15, 16 et 17 juillet 2026",
       "contact.inquiry.lbl": "Demande générale",
-      "contact.form.title": "Accréditation des délégués",
-      "contact.form.desc": "Veuillez fournir vos informations professionnelles ci-dessous.",
-      "contact.form.name": "Nom complet",
-      "contact.form.name.ph": "ex. Jean-Marc Konan",
-      "contact.form.org": "Organisation",
-      "contact.form.org.ph": "ex. Africa Capital Partners",
-      "contact.form.role": "Titre du poste",
-      "contact.form.role.ph": "ex. Chief Investment Officer",
-      "contact.form.email": "Adresse e-mail professionnelle",
-      "contact.form.email.ph": "ex. jm.konan@africacapital.com",
-      "contact.form.sector": "Secteur d'intérêt principal",
-      "contact.form.select": "Sélectionnez un secteur d'intérêt...",
-      "contact.form.opt1": "Immobilier & Villes intelligentes",
-      "contact.form.opt2": "Infrastructures & Logistique",
-      "contact.form.opt3": "Technologie & FinTech",
-      "contact.form.opt4": "Énergie & Réseau électrique",
-      "contact.form.opt5": "Agriculture & Agroalimentaire",
-      "contact.form.opt6": "Partenariats gouvernementaux",
+      "contact.form.title": "Fiche d'Accréditation",
+      "contact.form.desc": "Veuillez fournir les détails professionnels de votre entreprise ci-dessous.",
+      "contact.form.section1": "1. Identité du participant / de l'entreprise",
+      "contact.form.section2": "2. Motif de la participation",
+      "contact.form.section3": "3. Journées de participation souhaitées",
+      "contact.form.section4": "4. Documents joints (le cas échéant)",
+      "contact.form.company": "Nom de l'entreprise",
+      "contact.form.company.ph": "ex. Africa Capital Partners",
+      "contact.form.sector": "Secteur d'activité",
+      "contact.form.sector.ph": "ex. Agri-tech, Infrastructure",
+      "contact.form.rep": "Nom du représentant",
+      "contact.form.rep.ph": "ex. Jean-Marc Konan",
+      "contact.form.job": "Fonction",
+      "contact.form.job.ph": "ex. Directeur Général",
+      "contact.form.country": "Pays",
+      "contact.form.country.ph": "ex. Côte d'Ivoire",
+      "contact.form.phone": "Téléphone",
+      "contact.form.phone.ph": "ex. +225 07 00 00 00 00",
+      "contact.form.email": "E-mail",
+      "contact.form.email.ph": "ex. contact@entreprise.com",
+      "contact.form.m1": "Demande de financement",
+      "contact.form.m2": "Demande de partenariat",
+      "contact.form.m3": "Demande de création d'entreprise à Dubaï",
+      "contact.form.m4": "Opportunités d'investissement immobilier",
+      "contact.form.m5": "Rencontre avec des sociétés de trade finance (crédits export)",
+      "contact.form.m6": "Réservation pour le Forum des Investisseurs et CEO de septembre",
+      "contact.form.m7": "Autre (préciser)",
+      "contact.form.m7.ph": "Veuillez préciser...",
+      "contact.form.day1": "Jour 1 — 15 juillet (Ouverture, cocktail de bienvenue)",
+      "contact.form.day2": "Jour 2 — 16 juillet (Tables rondes)",
+      "contact.form.day3": "Jour 3 — 17 juillet (Point de presse, cérémonie de lancement)",
+      "contact.form.doc1": "Dossier de partenariat",
+      "contact.form.doc2": "Dossier de demande de financement",
+      "contact.form.doc3": "Présentation de l'entreprise (Pitch deck)",
+      "contact.form.doc4": "Autre document",
       "contact.form.submit": "Soumettre la demande d'accréditation",
       "footer.logo.sub": "FORUM D'INVESTISSEMENT",
       "footer.desc": "Libérer des corridors commerciaux bilatéraux, des infrastructures d'investissement conjointes et des flux de capitaux à haut rendement reliant la Côte d'Ivoire et Dubaï.",
