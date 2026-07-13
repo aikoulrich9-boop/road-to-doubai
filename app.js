@@ -253,7 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
           const company = document.getElementById('reg-company').value;
-      const sector = document.getElementById('reg-sector').value;
+      const sectorSelect = document.getElementById('reg-sector');
+      const sector = sectorSelect ? sectorSelect.options[sectorSelect.selectedIndex].text : '';
       const rep = document.getElementById('reg-rep').value;
       const job = document.getElementById('reg-job').value;
       const country = document.getElementById('reg-country').value;
@@ -606,7 +607,13 @@ document.addEventListener('DOMContentLoaded', () => {
       "contact.form.company": "Company Name",
       "contact.form.company.ph": "e.g. Africa Capital Partners",
       "contact.form.sector": "Sector of Activity",
-      "contact.form.sector.ph": "e.g. Agri-tech, Infrastructure",
+      "contact.form.select": "Select a sector...",
+      "contact.form.opt1": "Agriculture & Agri-food",
+      "contact.form.opt2": "Real Estate & Smart Cities",
+      "contact.form.opt3": "Energy & Infrastructure",
+      "contact.form.opt4": "Technology & FinTech",
+      "contact.form.opt5": "Logistics & Transport",
+      "contact.form.opt6": "Other",
       "contact.form.rep": "Representative Name",
       "contact.form.rep.ph": "e.g. Jean-Marc Konan",
       "contact.form.job": "Job Title / Position",
@@ -827,7 +834,13 @@ document.addEventListener('DOMContentLoaded', () => {
       "contact.form.company": "Nom de l'entreprise",
       "contact.form.company.ph": "ex. Africa Capital Partners",
       "contact.form.sector": "Secteur d'activité",
-      "contact.form.sector.ph": "ex. Agri-tech, Infrastructure",
+      "contact.form.select": "Sélectionnez un secteur...",
+      "contact.form.opt1": "Agriculture & Agroalimentaire",
+      "contact.form.opt2": "Immobilier & Smart Cities",
+      "contact.form.opt3": "Énergie & Infrastructures",
+      "contact.form.opt4": "Technologie & FinTech",
+      "contact.form.opt5": "Logistique & Transport",
+      "contact.form.opt6": "Autre",
       "contact.form.rep": "Nom du représentant",
       "contact.form.rep.ph": "ex. Jean-Marc Konan",
       "contact.form.job": "Fonction",

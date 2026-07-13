@@ -591,7 +591,15 @@
             <div class="form-group-row">
               <div class="form-group">
                 <label for="reg-sector" data-i18n="contact.form.sector">Secteur d'activité</label>
-                <input type="text" id="reg-sector" required placeholder="ex. Agri-tech, Infrastructure" data-i18n-placeholder="contact.form.sector.ph">
+                <select id="reg-sector" required>
+                  <option value="" disabled selected data-i18n="contact.form.select">Sélectionnez un secteur...</option>
+                  <option value="agriculture" data-i18n="contact.form.opt1">Agriculture & Agroalimentaire</option>
+                  <option value="realestate" data-i18n="contact.form.opt2">Immobilier & Smart Cities</option>
+                  <option value="energy" data-i18n="contact.form.opt3">Énergie & Infrastructures</option>
+                  <option value="technology" data-i18n="contact.form.opt4">Technologie & FinTech</option>
+                  <option value="logistics" data-i18n="contact.form.opt5">Logistique & Transport</option>
+                  <option value="other" data-i18n="contact.form.opt6">Autre</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="reg-rep" data-i18n="contact.form.rep">Nom du représentant</label>
