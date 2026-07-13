@@ -360,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.about": "About",
       "nav.forum": "Forum",
       "nav.opportunities": "Opportunities",
+      "nav.pricing": "Pricing",
 
       "nav.speakers": "Speakers",
       "nav.program": "Program",
@@ -562,6 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "nav.about": "À propos",
       "nav.forum": "Forum",
       "nav.opportunities": "Opportunités",
+      "nav.pricing": "Tarifs",
 
       "nav.speakers": "Intervenants",
       "nav.program": "Programme",
