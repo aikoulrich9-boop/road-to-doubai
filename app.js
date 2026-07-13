@@ -324,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Open WhatsApp link immediately in a new tab (bypasses browser popup blocker)
       const whatsappUrl = `https://wa.me/2250717659292?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');essage)}`;
       window.open(whatsappUrl, '_blank');
 
       // Simulate API submit latency
