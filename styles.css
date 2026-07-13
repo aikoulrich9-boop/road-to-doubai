@@ -1057,7 +1057,7 @@ body.grid-on .guides {
 .highlights-grid {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
 }
 
@@ -1681,6 +1681,9 @@ body.grid-on .guides {
   }
   .speakers-grid .speaker-card:last-child {
     grid-column: span 2;
+  }
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .col-info {
     grid-column: 1 / 7;
