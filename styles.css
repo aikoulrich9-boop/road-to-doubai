@@ -2606,4 +2606,13 @@ body.intro-popup-active .whatsapp-float {
   .pricing-amount {
     font-size: 2.75rem;
   }
+  .featured-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    align-self: flex-start;
+    margin-bottom: 16px;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
 }
